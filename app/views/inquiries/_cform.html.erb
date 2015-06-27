@@ -1,0 +1,86 @@
+<%= form_for :inquiry, url: inquiries_path do |f| %>
+<!--FirstName-->
+  <div class="row">
+    <div class="col-xs-4 col-md-3 left even">
+      <p>
+        <label>First Name:</label>
+      </p>
+    </div>
+    
+    <div class="col-xs-5 col-md-4 ">
+      <p>
+        <%= f.text_field :firstName, class: 'form-control form-inline form-group', placeholder:'Jane' %>
+      </p>
+    </div>
+  </div>
+<!--LastName-->
+  <div class="row">
+    <div class="col-xs-4 col-md-3 left even">
+      <p>
+        <label>Last Name:</label>
+      </p>
+    </div>
+    
+    <div class="col-xs-5 col-md-4">
+      <p>
+        <%= f.text_field :lastName, class: 'form-control form-inline form-group', placeholder:'Doe' %>
+      </p>
+    </div>    
+ </div>
+ 
+<!--Email-->
+  <div class="row">
+    <div class="col-xs-4 col-md-3 left even">
+      <p>
+        <label>Email:</label>
+      </p>
+    </div>
+    
+    <div class="col-xs-7 col-md-5">
+      <p>
+        <%= f.text_field :cemail, class: 'form-control form-inline form-group', placeholder:'example@email.com' %>
+      </p>
+    </div>
+  </div>
+  
+<!--Subject-Scroll-->
+  <div class="row">
+    <div class="col-xs-4 col-md-3 left even">
+      <p>
+        <label>Subject:</label>
+      </p>
+    </div>
+    
+    <div class="col-xs-7 col-md-5">
+      <%= select_tag( options_for_select([['General Inquiry', 1], ['Account Inquiry', 2], ['Content Inquiry', 3], ['Bug/Issue', 4], ['Other', 5]]), :subject, class:"form-control") %>
+    </div>
+   </div>
+    
+<!--TextBox-->
+  <div class="row">
+    <div class=" col-xs-4 col-md-2">
+    </div>
+    
+    <div class="col-xs-8 col-md-8"
+      <p>
+        <%= f.text_area :body, class: "form-control", rows:"5", placeholder:"Enter you inquiry here." %>
+      </p>
+    </div>
+  </div>
+
+<!--Submission-->
+  <div class="row">
+    <div class=" col-xs-4 col-md-3">
+      <%= file_field_tag 'picture' %>
+    </div>
+  
+    <div class="col-xs-offset-7 col-md-offset-6 ">
+    <%= f.submit :'Send Inquiry', class: 'btn btn-default'%>
+    </div>
+  </div>
+  
+<!--Text-->
+  <div class="row">
+     <p class="help-block col-xs-8 col-md-8">Upload a file if it will help us solve you issue or request.</p>
+  </div>
+<% end %>
