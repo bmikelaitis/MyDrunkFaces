@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
- # get 'welcome/index'
-
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+  
+  #route for home page
    root 'welcome#index'
+   get '/', to: "welcome#index"
+   
    #routes for static pages
-  get '/about', to: 'welcome#about'
+  get '/about', to: "welcome#about"
   get '/index', to: 'welcome#index'
   get '/info', to: 'welcome#info'
   get '/legal', to: 'welcome#legal'
