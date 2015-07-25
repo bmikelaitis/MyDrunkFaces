@@ -1,0 +1,23 @@
+<%= render 'shared/page_title', title: @face.picture %>
+
+<div class="row">
+    <div class="col-lg-4 col-xs-4 pull-right center">
+        <%= gravatar_for @face.user, size: 200 %>
+        <p>
+            <h5> Brought yo you by: <%= @face.user.firstname %> </h5>
+        </p>
+    </div>
+    <div class="col-lg-8 col-xs-8">
+
+        <h3> <% @face.description %> </h3>
+        <div class="well">
+            <p>
+                <strong> Description:</strong>
+            </p>
+            <%= simple_format(@face.description) %>
+        </div>
+    </div>
+</div>
+
+<h5> <%= link_to "Edit this Photo", edit_face_path(@face), class: "btn btn-success nav_item" %> </h5>
+<h5> <%= link_to "Return to Faces", faces_path, class: "btn btn-success  btn-small nav_item" %> </h5>

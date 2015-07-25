@@ -1,0 +1,17 @@
+<%= render 'shared/errors', obj: @user %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+		<%= form_for @user do |f| %>
+		<h5 class="bold left line_Up">First Name:</h5>
+		<%= f.text_field :firstname %>
+		<h5 class="bold left line_Up">Last Name:</h5>
+		<%= f.text_field :lastname %>
+		<h5 class="bold left line_Up">Email:</h5>
+		<%= f.email_field :email %>
+		<h5 class="bold left line_Up">Password:</h5>
+		<%= f.password_field :password%>
+	
+		<%= f.submit(@user.new_record? ? "Register" : "Edit Profile", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>

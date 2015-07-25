@@ -1,0 +1,21 @@
+<h1>All faces</h1>
+<hr/>
+
+<% @faces.each do |face| %>
+    <div class="row">
+        <div class="col-lg-2 col-xs-2">
+            <section class="user_info center">
+                <%= gravatar_for face.user, size:100 %>
+            <h5><%= face.user.firstname %> <%= face.user.lastname %></h5>
+            </section>
+        </div>
+        <div class="col-lg-8 col-xs-8 well">
+            <h4><%= link_to face.picture, face_path(face) %> </h4>
+            <p> <%= face.description %></p>
+            <p>
+                <span class= 'quiet'> <small> <%= time_ago_in_words(face.created_at) %> </small> </span>
+            </p>
+        </div>
+    </div>
+    <hr/>
+<% end %>

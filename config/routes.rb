@@ -8,14 +8,18 @@ Rails.application.routes.draw do
    get '/', to: "welcome#index"
    
    #routes for static pages
-  get '/about', to: "welcome#about"
+  get '/about', to: 'welcome#about'
   get '/index', to: 'welcome#index'
   get '/info', to: 'welcome#info'
   get '/legal', to: 'welcome#legal'
   get '/privacy', to: 'welcome#privacy'
+  get '/contact', to: 'contacts#index'
   
-    resources :inquiries
-  get '/contact', to: 'inquiries#contact'
+    resources :faces
+    resources :users
+    resources :contacts
+    resources :logins
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
