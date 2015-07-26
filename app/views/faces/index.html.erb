@@ -1,5 +1,7 @@
-<h1>All faces</h1>
-<hr/>
+<%= render 'shared/page_title', title: "All faces" %>
+
+<%= will_paginate %>
+
 
 <% @faces.each do |face| %>
     <div class="row">
@@ -12,11 +14,22 @@
         <div class="col-lg-8 col-xs-8 well">
             <h4><%= link_to (image_tag(face.picture.url, size:"250x150", class:"gravatar")), face_path(face) %> </h4>
             <p> <%= face.description %></p>
+            
             <p>
                 <span class= 'quiet'> <small>Created <%= time_ago_in_words(face.created_at) %> ago, </small> </span>
                 <span class= 'quiet'> <small>Updated <%= time_ago_in_words(face.updated_at) %> ago</small> </span>
             </p>
+            <div class="pull-right">
+                <%= link_to like_face_path(face, like: true), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-up">&nbsp</i><%= face.thumbs_up_total %> &nbsp&nbsp
+                <% end %> 
+                <%= link_to like_face_path(face, like: false), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-down">&nbsp</i> <%= face.thumbs_down_total %>
+                <% end %>
+            </div>
         </div>
     </div>
     <hr/>
 <% end %>
+
+<%= will_paginate %>

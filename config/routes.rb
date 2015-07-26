@@ -15,10 +15,17 @@ Rails.application.routes.draw do
   get '/privacy', to: 'welcome#privacy'
   get '/contact', to: 'contacts#index'
   
-    resources :faces
+    resources :faces do
+      member do
+        post 'like'
+      end
+      
+    end
+    
     resources :users
     resources :contacts
     resources :logins
+    
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

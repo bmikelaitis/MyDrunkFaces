@@ -21,6 +21,14 @@
                 <strong> Description:</strong>
             </p>
             <%= simple_format(@face.description) %>
+            <div class="pull-right">
+                <%= link_to like_face_path(@face, like: true), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-up">&nbsp</i><%= @face.thumbs_up_total %> &nbsp&nbsp
+                <% end %> 
+                <%= link_to like_face_path(@face, like: false), method: :post do %>
+                    <i class="glyphicon glyphicon-thumbs-down">&nbsp</i> <%= @face.thumbs_down_total %>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

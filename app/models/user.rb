@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base 
     has_many :faces
+    has_many :likes
     before_save { self.email = email.downcase }
     validates :firstname, presence: true, length: { minimum: 2, maximum: 15 }
     validates :lastname, presence: true, length: { minimum: 2, maximum: 20 }
