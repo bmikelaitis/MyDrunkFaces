@@ -2,13 +2,24 @@
 
 <div class="row">
     <div class="well col-xs-6 col-lg-6 col-lg-offset-3 col-xs-offset-3 center">
-        <%= form_for @face do |f| %>
-        <h5> Temporary Photo String: </h5>
-        <%= f.text_field :picture %>
+        
+        <%= form_for(@face, html: { multipart: true }) do |f| %>
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
         <h5> Describe the Photo: </h5>
         <%= f.text_area :description, rows:3 %>
         
-        <%= f.submit(@face.new_record? ? 'Submit Photo:' : 'Edit Photo' , class: "btn btn-success  btn-small" )%>
+        <%= f.submit(@face.new_record? ? 'Submit Photo' : 'Edit Photo' , class: "btn btn-success  btn-small" )%>
         <% end %>
     </div>
 </div>
+
+<script type='text/javascript'>
+    
+    $('#face_picture').bind('change', function() {
+        size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 5) {
+            alert('Maximum file size is 5MB. Please choose a smaller file');
+        }    
+    });
+    
+</script>

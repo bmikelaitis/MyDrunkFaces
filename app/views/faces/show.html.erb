@@ -1,16 +1,22 @@
-<%= render 'shared/page_title', title: @face.picture %>
+<%= render 'shared/showpage_title', title: @face.user.firstname %> 
 
 <div class="row">
-    <div class="col-lg-4 col-xs-4 pull-right center">
-        <%= gravatar_for @face.user, size: 200 %>
+    <div class="col-lg-3 col-xs-3 ">
+        <%= gravatar_for @face.user, size: 150 %>
         <p>
-            <h5> Brought yo you by: <%= @face.user.firstname %> </h5>
+            <h5><%= @face.user.firstname %> <%= @face.user.lastname %></h5>
+            <h5><%= @face.user.college if @face.user.college? %></h5>
+            <h5>State: <%= @face.user.state if @face.user.state? %></h5>
+            <h5>Member since: <%= time_ago_in_words(@face.user.created_at) %> ago</h5>
         </p>
     </div>
-    <div class="col-lg-8 col-xs-8">
+    <div class="col-lg-9 col-xs-9">
 
+        <div class="show_face">
+            <%= image_tag(@face.picture.url, size:"640x480", class:"gravatar") if @face.picture? %>
+        </div>
         <h3> <% @face.description %> </h3>
-        <div class="well">
+        <div class="well col-lg-9 col-xs-12">
             <p>
                 <strong> Description:</strong>
             </p>
@@ -19,5 +25,7 @@
     </div>
 </div>
 
-<h5> <%= link_to "Edit this Photo", edit_face_path(@face), class: "btn btn-success nav_item" %> </h5>
-<h5> <%= link_to "Return to Faces", faces_path, class: "btn btn-success  btn-small nav_item" %> </h5>
+<div class="col-lg-10 col-xs-12 ">
+    <h5> <%= link_to "Return to Faces", faces_path, class: "btn btn-success  btn-small nav_item pull-right" %> </h5>
+    <h5> <%= link_to "Edit this Photo", edit_face_path(@face), class: "btn btn-success nav_item pull-right" %> </h5>
+</div>

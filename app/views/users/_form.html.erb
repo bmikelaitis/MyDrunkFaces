@@ -8,6 +8,10 @@
 		<%= f.text_field :lastname %>
 		<h5 class="bold left line_Up">Email:</h5>
 		<%= f.email_field :email %>
+		<h5 class="bold left line_Up">State:</h5>
+		<%= f.select :state, options_for_select(us_states) %>
+		<h5 class="bold left line_Up">College:</h5>
+		<%= f.select :college, options_for_select(us_colleges) %>
 		<h5 class="bold left line_Up">Password:</h5>
 		<%= f.password_field :password%>
 	

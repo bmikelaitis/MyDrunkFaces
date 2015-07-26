@@ -7,7 +7,18 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: { maximum: 105 },
                                         uniqueness: { case_sensitive: false },
                                         format: { with: VALID_EMAIL_REGEX }
-    
+    validates :state, presence: true
 
     
+    validate :avatar_size
+
+    private
+        def avatar_size
+            if avatar.size > 5.megabytes
+                errors.add(:avatar, "Should be less than 5MB")
+            end
+        end
+    
 end
+    
+

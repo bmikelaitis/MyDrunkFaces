@@ -10,10 +10,11 @@
             </section>
         </div>
         <div class="col-lg-8 col-xs-8 well">
-            <h4><%= link_to face.picture, face_path(face) %> </h4>
+            <h4><%= link_to (image_tag(face.picture.url, size:"250x150", class:"gravatar")), face_path(face) %> </h4>
             <p> <%= face.description %></p>
             <p>
-                <span class= 'quiet'> <small> <%= time_ago_in_words(face.created_at) %> </small> </span>
+                <span class= 'quiet'> <small>Created <%= time_ago_in_words(face.created_at) %> ago, </small> </span>
+                <span class= 'quiet'> <small>Updated <%= time_ago_in_words(face.updated_at) %> ago</small> </span>
             </p>
         </div>
     </div>
