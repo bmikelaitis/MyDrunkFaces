@@ -30,7 +30,7 @@ gem 'bcrypt', '3.1.7'
 gem 'spring',   group: :development
 
 group :production do
-  gem 'pg', '0.10.2'
+  gem 'pg'
   gem 'rails_12factor'
 end
 
