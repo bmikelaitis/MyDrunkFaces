@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150726194656) do
+ActiveRecord::Schema.define(version: 20150726233346) do
 
   create_table "faces", force: :cascade do |t|
     t.text     "description"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150726194656) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "picture"
+    t.boolean  "public",      default: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -34,13 +35,15 @@ ActiveRecord::Schema.define(version: 20150726194656) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
-    t.boolean  "emailauth",  default: false
-    t.integer  "status",     default: 1
+    t.boolean  "emailauth",       default: false
+    t.integer  "status",          default: 1
     t.string   "state"
     t.string   "college"
+    t.string   "birthday"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar",     default: "/uploads/user/avatar/default.jpg"
+    t.string   "avatar",          default: "/default.jpg"
+    t.string   "password_digest"
   end
 
 end

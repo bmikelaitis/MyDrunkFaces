@@ -1,0 +1,15 @@
+<%= render 'shared/page_title', title: 'Log In' %>
+<div class="row">
+	<div class="well col-xs-6 col-lg-6 col-lg-offset-3 col-xs-offset-3 center">
+		<%= form_tag '/login' do %>
+		
+		<h5 class="bold level_form left">Email:</h5>
+		<%= text_field_tag :email %>
+
+		<h5 class="bold level_form left">Password:</h5>
+		<%= password_field_tag :password %>
+
+	<%= submit_tag 'Login', class: 'btn btn-success border-blue' %>
+	<% end %>
+	</div>
+</div>

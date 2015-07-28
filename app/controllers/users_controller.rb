@@ -22,27 +22,28 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-
+		@user = User.find(params[:id])
 	end
 
 	def update
-		
+		@user = User.find(params[:id])
 		if @user.update(user_params)
 			flash[:success] = "Your account has been updated succesfully"
-			redirect_to user_path(@user) 
+			redirect_to faces_path(@user) #TODO change to users_path
 		else
 			render 'edit'
 		end
 	end
 
 	def show
-		@users = @user.faces.paginate(page: params[:page], per_page: 3)
-		@review = Review.new
+		@user = User.find(params[:id])
+		@faces = @user.faces.paginate(page: params[:page], per_page: 3).order("updated_at DESC")
+
 	end
 
 	private
 	def user_params
-		params.require(:user).permit(:firstname, :lastname, :email, :state, :college, :avatar)
+		params.require(:user).permit(:firstname, :lastname, :email, :state, :college, :password, :birthday, :avatar)
 	end
 
 	def set_user

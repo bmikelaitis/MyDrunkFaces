@@ -1,0 +1,47 @@
+<%= render 'shared/page_title', title: "DrunkFacer: " + @user.firstname + " " + @user.lastname%> 
+
+<div class="row">
+    <div class="col-lg-4 col-xs-4 col-lg-offset-5 col-xs-offset-4 ">
+        <%= gravatar_for @user, size: 150 %>
+        <p>
+            <h5><%= @user.college if @user.college? %></h5>
+            <h5>State: <%= @user.state if @user.state? %></h5>
+            <h5>Member since: <%= time_ago_in_words(@user.created_at) %> ago</h5>
+        </p>
+    </div>
+</div>
+
+<div class="row">   
+    <div class="col-lg-4 col-xs-4 col-lg-offset-2 col-xs-offset-2">
+        <%= will_paginate @faces %> 
+    </div>
+    <% @faces.each do |face| %>
+            <div class= "row">
+                <hr/>
+                <div class="col-lg-8 col-xs-8 well col-lg-offset-2">
+                        <h4><%= link_to (image_tag(face.picture.url, size:"250x150", class:"gravatar")), face_path(face) %> </h4>
+                        <p> <%= face.description %></p>
+                        
+                        <p>
+                            <span class= 'quiet'> <small>Created <%= time_ago_in_words(face.created_at) %> ago, </small> </span>
+                            <span class= 'quiet'> <small>Updated <%= time_ago_in_words(face.updated_at) %> ago</small> </span>
+                        </p>
+                        <div class="pull-right">
+                            <%= link_to like_face_path(face, like: true), method: :post do %>
+                                <i class="glyphicon glyphicon-thumbs-up">&nbsp</i><%= face.thumbs_up_total %> &nbsp&nbsp
+                            <% end %> 
+                            <%= link_to like_face_path(face, like: false), method: :post do %>
+                                <i class="glyphicon glyphicon-thumbs-down">&nbsp</i> <%= face.thumbs_down_total %>
+                            <% end %>
+                        </div>
+                </div>
+            </div>
+    
+    <% end %>
+    <div class="row">
+        <div class="col-lg-4 col-xs-4 col-lg-offset-2 col-xs-offset-2">
+                <%= will_paginate @faces %>
+        </div>
+    </div>
+    
+</div>

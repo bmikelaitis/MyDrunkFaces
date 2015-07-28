@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :status, default: 1
       t.string :state
       t.string :college
+      t.string :birthday
       t.timestamps
     end
   end

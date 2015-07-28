@@ -1,4 +1,5 @@
 class FacesController < ApplicationController
+	
     
     def index
         @faces = Face.paginate(page: params[:page], per_page: 4).order("updated_at DESC")
@@ -15,7 +16,7 @@ class FacesController < ApplicationController
     def create
 
 		@face = Face.new(face_params)
-		@face.user = User.find(1)
+		@face.user = current_user
 
 		if @face.save
 			flash[:success] = "Your face was submitted successfully!"

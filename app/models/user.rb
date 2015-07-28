@@ -9,8 +9,9 @@ class User < ActiveRecord::Base
                                         uniqueness: { case_sensitive: false },
                                         format: { with: VALID_EMAIL_REGEX }
     validates :state, presence: true
-
     
+    has_secure_password
+    mount_uploader :avatar, AvatarUploader
     validate :avatar_size
 
     private

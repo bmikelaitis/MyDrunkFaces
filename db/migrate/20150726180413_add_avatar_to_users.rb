@@ -1,5 +1,5 @@
 class AddAvatarToUsers < ActiveRecord::Migration
   def change
-    add_column :users, :avatar, :string, default:"/uploads/user/avatar/default.jpg"
+    add_column :users, :avatar, :string, default:"/default.jpg"
   end
 end

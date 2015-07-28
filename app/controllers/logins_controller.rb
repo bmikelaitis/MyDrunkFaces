@@ -1,6 +1,6 @@
 class LoginsController < ApplicationController
 	def new
-
+		
 	end
 
 	def create
@@ -8,7 +8,7 @@ class LoginsController < ApplicationController
 		if user && user.authenticate(params[:password])
 			flash[:success] = "You are Logged In!"
 			redirect_to faces_path
-			session[:user_id] = chef.id
+			session[:user_id] = user.id
 		else
 			flash.now[:danger] = "Your email address or password does not match."
 			render 'new'

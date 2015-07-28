@@ -1,0 +1,36 @@
+<%= render 'shared/errors', obj: @user %>
+<div class="row">
+	<div class="well col-xs- col-lg-8 col-lg-offset-2 col-xs-offset-2 center">
+        <%= form_for(@user, html: { multipart: true }) do |f| %>
+		<h5 class="bold left line_Up">First Name:</h5>
+		<%= f.text_field :firstname %>
+		<h5 class="bold left line_Up">Last Name:</h5>
+		<%= f.text_field :lastname %>
+		<h5 class="bold left line_Up">Email:</h5>
+		<%= f.email_field :email %>
+		<h5 class="bold left line_Up">State:</h5>
+		<%= f.select :state, options_for_select(us_states) %>
+		<h5 class="bold left line_Up">College:</h5>
+		<%= f.select :college, options_for_select(us_colleges) %>
+		<h5 class="bold left line_Up">Password:</h5>
+		<%= f.password_field :password%>
+		<h5 class="bold left line_Up">Birthday:</h5>
+		<%= f.date_field(:birthday) %>
+		<h5 class="bold left line_Up">Upload a Profile Picture:</h5>
+		<%= f.file_field :avatar, accept: 'image/jpeg,image/gif,image/png' %>
+	
+		<%= f.submit(@user.new_record? ? "Register" : "Edit Profile", class: "btn btn-success") %>
+		<% end %>
+	</div>
+</div>
+
+<script type='text/javascript'>
+    
+    $('#user_avatar').bind('change', function() {
+        size_in_megabytes = this.files[0].size/1024/1024;
+        if (size_in_megabytes > 5) {
+            alert('Maximum file size is 5MB. Please choose a smaller file');
+        }    
+    });
+    
+</script>

@@ -22,9 +22,15 @@ Rails.application.routes.draw do
       
     end
     
-    resources :users
+    resources :users, except: [:new]
+    
+    get '/register', to: 'users#new'
+    
     resources :contacts
-    resources :logins
+    
+    get '/login', to: 'logins#new'
+    post '/login', to: 'logins#create'
+    get '/logout', to: 'logins#destroy'
     
 
   # Example of regular route:

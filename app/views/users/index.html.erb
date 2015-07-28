@@ -1,0 +1,19 @@
+<%= render 'shared/page_title', title: "All Users" %>
+
+<div class="row">
+    <div class= "col-lg-4 col-lg-offset-3 center">
+    <%= will_paginate %>
+    </div>
+</div>
+
+<% @users.each do |user| %>
+<div class="row">
+    <div class= "col-lg-4 col-lg-offset-4 center">
+        <%= link_to avatar_for(user, size: 100), user_path(user) %>
+        <p>
+            <h4> <%= user.firstname + " " + user.lastname %> </h4>
+        </p>
+    </div>
+</div>
+
+<% end %>
